@@ -21,15 +21,15 @@ export async function generateMetadata({ params }) {
   const { collectionData } = await getCollection(params)
 
   return {
-    title: `Tailwind CSS ${collectionData.seo.title} | HyperUI`,
+    title: `${collectionData.seo.title} | UniswapHooks`,
     description: collectionData.seo.description,
     openGraph: {
-      title: `Tailwind CSS ${collectionData.seo.title} | HyperUI`,
+      title: `${collectionData.seo.title} | UniswapHooks`,
       description: collectionData.seo.description,
       ...ogMeta,
     },
     twitter: {
-      title: `Tailwind CSS ${collectionData.seo.title} | HyperUI`,
+      title: `${collectionData.seo.title} | UniswapHooks`,
       description: collectionData.seo.description,
       ...twitterMeta,
     },
@@ -48,19 +48,19 @@ async function getCollection(params) {
 
   const postItem = await fs.readFile(componentPath, 'utf-8')
 
-  const { content, data: frontmatter } = matter(postItem)
+  const { content, data: hook_info } = matter(postItem)
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [],
       rehypePlugins: [],
     },
-    scope: frontmatter,
+    scope: hook_info,
   })
 
   return {
     collectionData: {
-      ...frontmatter,
+      ...hook_info,
       slug: params.collection,
     },
     collectionContent: mdxSource,
@@ -68,25 +68,29 @@ async function getCollection(params) {
 }
 
 export default async function Page({ params }) {
+  console.log('params', params)
   const { collectionData, collectionContent } = await getCollection(params)
 
   const componentsData = {
     componentContainer: collectionData.container || '',
-    componentsData: Object.entries(collectionData.components).map(
+    componentsData: collectionData.components ? Object.entries(collectionData.components).map(
       ([componentId, componentItem]) => {
         return {
           id: componentId,
           title: componentItem.title,
+          description: componentItem.description,
+          github: componentItem.github,
+          website: componentItem.website,
           slug: collectionData.slug,
           category: collectionData.category,
           container: componentItem.container || '',
           creator: componentItem.creator || '',
           dark: !!componentItem.dark,
-          interactive: !!componentItem.interactive,
         }
       }
-    ),
+    ) : [],
   }
+
 
   return (
     <Container classNames="py-8 lg:py-12 space-y-8 lg:space-y-12">
@@ -94,16 +98,18 @@ export default async function Page({ params }) {
         activeCollection={params.collection}
         activeCategory={params.category}
       />
-
-      <Ad adType="text" adClass="bordered horizontal" adId="collection-page" />
-
-      <div className="prose max-w-none">
+      {/* <Ad adType="text" adClass="bordered horizontal" adId="collection-page" /> */}
+      <div
+        className="prose max-w-none
+          
+      "
+      >
         <MdxRemoteRender
           mdxSource={collectionContent}
           mdxComponents={mdxComponents}
           mdxScope={componentsData}
         />
-      </div>
+      </div>{' '}
     </Container>
   )
 }

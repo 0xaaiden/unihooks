@@ -24,15 +24,15 @@ export async function generateMetadata({ params }) {
   const { blogData } = await getPost(params)
 
   return {
-    title: `${blogData.title} | HyperUI`,
+    title: `${blogData.title} | UniswapHooks`,
     description: blogData.description,
     openGraph: {
-      title: `${blogData.title} | HyperUI`,
+      title: `${blogData.title} | UniswapHooks`,
       description: blogData.description,
       ...ogMeta,
     },
     twitter: {
-      title: `${blogData.title} | HyperUI`,
+      title: `${blogData.title} | UniswapHooks`,
       description: blogData.description,
       ...twitterMeta,
     },
@@ -88,8 +88,6 @@ export default async function Page({ params }) {
 
             <h1 className="mt-1">{blogData.title}</h1>
           </header>
-
-          <Ad adType="text" adClass="bordered horizontal" adId="blog-page" />
 
           <TableContent />
 

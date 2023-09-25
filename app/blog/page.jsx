@@ -9,15 +9,15 @@ import HeroBanner from '@component/HeroBanner'
 import BlogGrid from '@component/BlogGrid'
 
 export const metadata = {
-  title: 'Tailwind CSS Blog | HyperUI',
+  title: 'Tailwind CSS Blog | UniswapHooks',
   description: 'Tips and tricks for using Tailwind CSS in your projects.',
   openGraph: {
-    title: 'Tailwind CSS Blog | HyperUI',
+    title: 'Tailwind CSS Blog | UniswapHooks',
     description: 'Tips and tricks for using Tailwind CSS in your projects.',
     ...ogMeta,
   },
   twitter: {
-    title: 'Tailwind CSS Blog | HyperUI',
+    title: 'Tailwind CSS Blog | UniswapHooks',
     description: 'Tips and tricks for using Tailwind CSS in your projects.',
     ...twitterMeta,
   },

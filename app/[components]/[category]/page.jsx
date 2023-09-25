@@ -12,15 +12,15 @@ export async function generateMetadata({ params }) {
   const { categoryData } = await getCategory(params)
 
   return {
-    title: `Tailwind CSS ${categoryData.title} Components | HyperUI`,
+    title: `${categoryData.title} Hooks | UniswapHooks`,
     description: categoryData.description,
     openGraph: {
-      title: `Tailwind CSS ${categoryData.title} Components | HyperUI`,
+      title: `${categoryData.title} Hooks | UniswapHooks`,
       description: categoryData.description,
       ...ogMeta,
     },
     twitter: {
-      title: `Tailwind CSS ${categoryData.title} Components | HyperUI`,
+      title: ` ${categoryData.title} Hooks | UniswapHooks`,
       description: categoryData.description,
       ...twitterMeta,
     },
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  return ['application-ui', 'marketing', 'ecommerce']
+  return ['hooks']
 }
 
 async function getCategory(params) {
@@ -57,7 +57,7 @@ async function getCategory(params) {
           `${categorySlug}-`,
           ''
         )
-        const componentCount = Object.values(componentData.components).length
+        const componentCount = componentData.components ? Object.values(componentData.components).length : 0;
 
         return {
           title: componentData.title,

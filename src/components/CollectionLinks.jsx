@@ -10,7 +10,7 @@ async function getComponents() {
   const componentsPath = join(process.cwd(), '/src/data/components')
   const categoriesPath = join(process.cwd(), '/src/data/categories')
 
-  const categorySlugs = ['application-ui', 'marketing', 'ecommerce']
+  const categorySlugs = ['hooks']
   const componentSlugs = await fs.readdir(componentsPath)
 
   const categoriesData = await Promise.all(
@@ -24,6 +24,8 @@ async function getComponents() {
     })
   )
 
+  console.log('categoriesData', categoriesData)
+
   const componentsData = await Promise.all(
     componentSlugs.map(async (componentSlug) => {
       const componentPath = join(componentsPath, componentSlug)
@@ -36,23 +38,27 @@ async function getComponents() {
         `${componentData.category}-`,
         ''
       )
-      const componentCount = Object.values(componentData.components).length
+      const componentCount = componentData.components ? Object.values(componentData.components).length : 0;
 
       const categoryPath = join(categoriesPath, `${componentData.category}.mdx`)
       const categoryItem = await fs.readFile(categoryPath, 'utf-8')
+      console.log('categoryItem', categoryItem, 'categoryPath', categoryPath)
 
       const { data: categoryData } = matter(categoryItem)
+      console.log(categoryData, 'data')
 
       return {
         title: componentData.title,
         slug: componentSlugTrue,
-        emoji: categoryData.emoji,
+        emoji: componentData.emoji,
         count: componentCount,
         category: componentData.category,
         id: componentSlugFormatted,
       }
     })
   )
+
+  console.log('componentsData', componentsData)
 
   return {
     categoriesData,
@@ -85,13 +91,22 @@ export default async function CollectionLinks({
         ))}
       </ul>
 
-      <ul className="mt-4 flex gap-1 overflow-auto md:flex-wrap md:overflow-hidden">
+      <ul className="mt-4 flex gap-1 flex-wrap ">
         {componentsData.map((componentData) => {
           const buttonText = `${componentData.title} (${componentData.count})`
           const isActive =
             activeCategory === componentData.category &&
             activeCollection === componentData.slug
-
+          console.log(
+            'componentData',
+            componentData,
+            'activeCategory',
+            activeCategory,
+            'activeCollection',
+            activeCollection,
+            'isActive',
+            isActive
+          )
           return (
             <li key={componentData.id} className="shrink-0 md:shrink">
               <Link

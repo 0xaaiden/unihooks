@@ -5,10 +5,10 @@ export default function HeaderMenuLinks({ menuLinks, navClass, ulClass }) {
     <nav aria-label="Global" className={navClass && navClass}>
       <ul className={ulClass && ulClass}>
         {menuLinks.map((menuLink, index, { length }) => {
-          const isLast = index === length - 1
+          // const isLast = index === length - 1
 
           return (
-            <li key={menuLink.href} className={isLast ? 'lg:ms-auto' : ''}>
+            <li key={menuLink.href}>
               <Link
                 href={menuLink.href}
                 {...(menuLink.external && {

@@ -25,15 +25,15 @@ export async function generateMetadata({ params }) {
   const { pageData } = await getPage(params)
 
   return {
-    title: `${pageData.title} | HyperUI`,
+    title: `${pageData.title} | UniswapHooks`,
     description: pageData.description,
     openGraph: {
-      title: `${pageData.title} | HyperUI`,
+      title: `${pageData.title} | UniswapHooks`,
       description: pageData.description,
       ...ogMeta,
     },
     twitter: {
-      title: `${pageData.title} | HyperUI`,
+      title: `${pageData.title} | UniswapHooks`,
       description: pageData.description,
       ...twitterMeta,
     },
@@ -72,7 +72,6 @@ export default async function Page({ params }) {
       <article className="prose mx-auto">
         <h1>{pageData.title}</h1>
 
-        <Ad adType="text" adClass="bordered horizontal" adId="about-page" />
 
         <MdxRemoteRender
           mdxSource={pageContent}

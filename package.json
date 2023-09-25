@@ -11,9 +11,11 @@
     "postbuild": "yarn css"
   },
   "dependencies": {
+    "@vercel/og": "^0.5.17",
     "next": "^13.4.19",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-show-more-text": "^1.6.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.5.2",

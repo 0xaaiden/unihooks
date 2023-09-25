@@ -6,29 +6,28 @@ import { Inter } from 'next/font/google'
 import 'prismjs/themes/prism-okaidia.css'
 import '@style/site.css'
 
-import Ads from '@/ads'
+// import Ads from '@/ads'
 import Footer from '@component/Footer'
 import Header from '@component/Header'
 import HeaderBanner from '@component/HeaderBanner'
 
 export const metadata = {
-  title: 'Free Open Source Tailwind CSS Components | HyperUI',
-  description:
-    'Free Tailwind CSS components that can be used in your next project.',
+  title: 'Uniswap Hooks Open Directory',
+  description: 'Uniswap Hooks examples that can be used in your next project.',
   openGraph: {
-    title: 'Free Open Source Tailwind CSS Components | HyperUI',
+    title: 'Open Source Uniswap v4 Hooks | Uniswap Hooks Open Directory',
     description:
-      'Free Tailwind CSS components that can be used in your next project.',
-    url: 'https://www.hyperui.dev/',
-    siteName: 'HyperUI',
+      'Uniswap Hooks examples that can be used in your next project.',
+    url: 'https://www.uniswaphooks.com/',
+    siteName: 'UniswapHooks',
     type: 'website',
-    images: ['https://www.hyperui.dev/og.jpg'],
+    images: ['https://www.uniswaphooks.com/og.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Open Source Tailwind CSS Components | HyperUI',
+    title: 'Open Source Uniswap v4 Hooks | Uniswap Hooks Open Directory',
     description:
-      'Free Tailwind CSS components that can be used in your next project.',
+      'Uniswap Hooks examples that can be used in your next project.',
   },
 }
 
@@ -67,7 +66,6 @@ export default function RootLayout({ children }) {
 
         <Footer />
 
-        <Ads />
       </body>
     </html>
   )

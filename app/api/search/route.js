@@ -8,7 +8,7 @@ async function getComponents() {
   const componentsPath = join(process.cwd(), '/src/data/components')
   const categoriesPath = join(process.cwd(), '/src/data/categories')
 
-  const categorySlugs = ['application-ui', 'marketing', 'ecommerce']
+  const categorySlugs = ['hooks']
   const componentSlugs = await fs.readdir(componentsPath)
 
   const componentsByCategory = await Promise.all(
@@ -32,9 +32,8 @@ async function getComponents() {
               `${categorySlug}-`,
               ''
             )
-            const componentCount = Object.values(
-              componentData.components
-            ).length
+            const componentCount = componentData.components ? Object.values(componentData.components).length : 0;
+
 
             return {
               id: componentSlugFormatted,

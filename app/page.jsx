@@ -10,7 +10,7 @@ async function getComponents() {
   const componentsPath = join(process.cwd(), '/src/data/components')
   const categoriesPath = join(process.cwd(), '/src/data/categories')
 
-  const categorySlugs = ['application-ui', 'marketing', 'ecommerce']
+  const categorySlugs = ['hooks']
   const componentSlugs = await fs.readdir(componentsPath)
 
   const componentsByCategory = await Promise.all(
@@ -34,10 +34,7 @@ async function getComponents() {
               `${componentData.category}-`,
               ''
             )
-            const componentCount = Object.values(
-              componentData.components
-            ).length
-
+      const componentCount = componentData.components ? Object.values(componentData.components).length : 0;
             return {
               title: componentData.title,
               slug: componentSlugTrue,
@@ -66,12 +63,12 @@ export default async function Page() {
   return (
     <>
       <HeroBanner
-        title="HyperUI"
-        subtitle="Free Open Source Tailwind CSS Components"
+        title="Uniswap v4 Hooks"
+        subtitle="Open Source Directory for Uniswap v4 Hooks"
       >
-        HyperUI is a collection of free Tailwind CSS components that can be used
-        in your next project. With a range of components, you can build your
-        next marketing website, admin dashboard, eCommerce store and much more.
+        A community-curated collection of hooks implementations for Uniswap v4 that can
+        be used in your project. Each hook is self-contained and can be used
+        independently.
       </HeroBanner>
 
       <Container classNames="pb-8 lg:pb-12">
@@ -79,9 +76,9 @@ export default async function Page() {
           {componentsByCategory.map(({ categoryTitle, componentItems }) => {
             return (
               <li className="space-y-4" key={categoryTitle}>
-                <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
+                {/* <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
                   {categoryTitle}
-                </h2>
+                </h2> */}
 
                 <CollectionGrid componentItems={componentItems} />
               </li>

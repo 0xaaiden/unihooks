@@ -31,11 +31,49 @@ export default function PreviewCopy({ componentCode = '' }) {
   }
 
   return (
-    <button className="hidden sm:block" onClick={handleCopyToClipboard}>
+    <button className="block" onClick={handleCopyToClipboard}>
       <ButtonStyle
         buttonEmoji={buttonEmoji}
         buttonText={buttonText}
         buttonActive={buttonActive}
+      />
+    </button>
+  )
+}
+
+export function PreviewGithub({ repoUrl = '' }) {
+  const [buttonText, setButtonText] = useState('GitHub')
+  const [buttonEmoji, setButtonEmoji] = useState('👨‍💻')
+
+  function handleButtonClick() {
+    window.open(repoUrl, '_blank')
+  }
+
+  return (
+    <button className="block" onClick={handleButtonClick}>
+      <ButtonStyle
+        buttonEmoji={buttonEmoji}
+        buttonText={buttonText}
+        buttonActive={false}
+      />
+    </button>
+  )
+}
+export function PreviewWebsite({ websiteUrl = '' }) {
+  const [buttonText, setButtonText] = useState('Website')
+  const [buttonEmoji, setButtonEmoji] = useState('🌐')
+
+  function handleButtonClick() {
+    window.open(websiteUrl, '_blank')
+  }
+
+  return (
+    <button className="block" onClick={handleButtonClick}>
+      <ButtonStyle
+        buttonEmoji={buttonEmoji}
+        buttonText={buttonText}
+        buttonActive={false}
+        // classAdd={"èpx"}
       />
     </button>
   )

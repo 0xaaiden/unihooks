@@ -1,12 +1,12 @@
 export const ogMeta = {
-  url: 'https://www.hyperui.dev/',
-  siteName: 'HyperUI',
+  url: 'https://www.uniswaphooks.com/',
+  siteName: 'Uniswap v4 Hooks Directory',
   type: 'website',
-  images: ['https://www.hyperui.dev/og.jpg'],
+  images: ['https://www.uniswaphooks.com/og.jpg'],
 }
 
 export const twitterMeta = {
-  title: 'Free Open Source Tailwind CSS Components | HyperUI',
+  title: 'Uniswap v4 Hooks Directory: Open-Source Community Contributions',
   description:
-    'Free Tailwind CSS components that can be used in your next project.',
+    'Explore, share, and contribute to the directory for Uniswap v4 hooks. Built by the community, for the community.',
 }

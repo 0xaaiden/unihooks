@@ -3,6 +3,7 @@ export default function ButtonStyle({
   buttonText,
   buttonActive,
   isDark,
+  classAdd,
 }) {
   const buttonClasses = {
     DEFAULT: `border-gray-900 ${
@@ -19,7 +20,7 @@ export default function ButtonStyle({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-lg border-2 px-3 py-1.5 ${buttonClass}`}
+      className={`inline-flex items-center gap-1.5 rounded-lg border-2 px-3 py-1.5 ${buttonClass} ${classAdd}`}
     >
       <span aria-hidden="true" role="img" className="text-sm">
         {buttonEmoji}
